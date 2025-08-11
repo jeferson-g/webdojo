@@ -25,12 +25,12 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 
-Cypress.Commands.add('inicio', ()=> {
+Cypress.Commands.add('Start', ()=> {
     cy.viewport(1920, 1080)
     cy.visit('http://localhost:3000/')
 })
 
-Cypress.Commands.add('SubmeterLogin', (email, senha)=> {
+Cypress.Commands.add('SubmitLoginform', (email, senha)=> {
     cy.get('#email').type(email)
     cy.get('#password').type(senha)
     
