@@ -1,12 +1,7 @@
 describe('Login', () => {
-  it('Deve realizar o login', ()=> {
-    cy.viewport(1920, 1080)
-    cy.visit('http://localhost:3000/')
-
-    cy.get('#email').type('papito@webdojo.com')
-    cy.get('#password').type('katana123')
-    
-    cy.contains('button', 'Entrar').click()
+  it('Deve realizar o login com sucesso', ()=> {
+    cy.inicio()
+    cy.SubmeterLogin('papito@webdojo.com','katana123')
 
     cy.get('[data-cy="user-name"]')
       .should('be.visible')
@@ -19,31 +14,20 @@ describe('Login', () => {
   })
 
   it('NÃO deve logar com senha inválida', ()=> {
-    cy.viewport(1920, 1080)
-    cy.visit('http://localhost:3000/')
-
-    cy.get('#email').type('papito@webdojo.com')
-    cy.get('#password').type('katana321')
-    
-    cy.contains('button', 'Entrar').click()
+    cy.inicio()
+    cy.SubmeterLogin('papito@webdojo.com','XXX')
 
     cy.contains('Acesso negado! Tente novamente.')
       .should('be.visible')
 })
 
   it('NÃO deve logar com email não cadastrado', ()=> {
-    cy.viewport(1920, 1080)
-    cy.visit('http://localhost:3000/')
-
-    cy.get('#email').type('404@webdojo.com')
-    cy.get('#password').type('katana123')
+    cy.inicio()
+    cy.SubmeterLogin('404@webdojo.com','katana123')
     
     cy.contains('button', 'Entrar').click()
 
     cy.contains('Acesso negado! Tente novamente.')
       .should('be.visible')
-})
-
-
-
+  })
 })
