@@ -15,5 +15,7 @@ describe('Login', () => {
     cy.get('[data-cy="welcome-message"]')
       .should('be.visible')
       .and('have.text', 'Olá QA, esse é o seu Dojo para aprender Automação de Testes.')
+
+//fazendo um teste de up no github
   })
 })
