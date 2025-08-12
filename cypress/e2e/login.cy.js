@@ -1,7 +1,7 @@
 describe('Login', () => {
-  it('Deve realizar o login com sucesso', ()=> {
+  it('Deve realizar o login com sucesso', () => {
     cy.Start()
-    cy.SubmitLoginform('papito@webdojo.com','katana123')
+    cy.SubmitLoginform('papito@webdojo.com', 'katana123')
 
     cy.get('[data-cy="user-name"]')
       .should('be.visible')
@@ -13,18 +13,18 @@ describe('Login', () => {
 
   })
 
-  it('NÃO deve logar com senha inválida', ()=> {
+  it('NÃO deve logar com senha inválida', () => {
     cy.Start()
-    cy.SubmitLoginform('papito@webdojo.com','XXX')
+    cy.SubmitLoginform('papito@webdojo.com', 'XXX')
 
     cy.contains('Acesso negado! Tente novamente.')
       .should('be.visible')
-})
+  })
 
-  it('NÃO deve logar com email não cadastrado', ()=> {
+  it('NÃO deve logar com email não cadastrado', () => {
     cy.Start()
-    cy.SubmitLoginform('404@webdojo.com','katana123')
-    
+    cy.SubmitLoginform('404@webdojo.com', 'katana123')
+
     cy.contains('button', 'Entrar').click()
 
     cy.contains('Acesso negado! Tente novamente.')
