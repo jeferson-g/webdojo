@@ -1,7 +1,6 @@
 describe('Formulário de consultoria', () => {
 
-
-    it('Deve solicitar consultoria individual', () => {
+    it.only('Deve solicitar consultoria individual', () => {
         cy.Start()
         cy.SubmitLoginform('papito@webdojo.com', 'katana123')
 
@@ -85,12 +84,17 @@ describe('Formulário de consultoria', () => {
         cy.contains('button', 'Enviar formulário')
             .click()
 
-        cy.contains('Sua solicitação de consultoria foi enviada com sucesso! Em breve, nossa equipe entrará em contato através do email fornecido.')
+        cy.get('.modal').should('be.visible')
+            .find('.modal-content')
             .should('be.visible')
+            .and('have.text', 'Sua solicitação de consultoria foi enviada com sucesso! Em breve, nossa equipe entrará em contato através do email fornecido.')
+
+        // cy.contains('Sua solicitação de consultoria foi enviada com sucesso! Em breve, nossa equipe entrará em contato através do email fornecido.')
+        //     .should('be.visible')
         
         })
 
-    it.only('Deve verificar os campos obrigatórios', () => {
+    it('Deve verificar os campos obrigatórios', () => {
         cy.Start()
         cy.SubmitLoginform('papito@webdojo.com', 'katana123')
 
@@ -99,21 +103,30 @@ describe('Formulário de consultoria', () => {
         cy.contains('button', 'Enviar formulário')
             .click()
             
-        cy.contains('p', "Digite nome e sobrenome")
+        //Nova versão liberada, foi realizado uma alteração nas mensagens obrigatorias.  
+        cy.contains('label', 'Nome Completo')
+            .parent()
+            .find('p')
             .should('be.visible')
+            .should('have.text','Campo obrigatório')
             .and('have.class','text-red-400')
             .and('have.css','color', 'rgb(248, 113, 113)')
 
-        cy.contains('p', "Informe um email válido")
+        cy.contains('label', 'Email')
+            .parent()
+            .find('p')
             .should('be.visible')
+            .should('have.text','Campo obrigatório')
             .and('have.class','text-red-400')
             .and('have.css','color', 'rgb(248, 113, 113)')
 
-        cy.contains('p', "Você precisa aceitar os termos de uso")
+        cy.contains('label', 'termos de uso')
+            .parent()
+            .find('p')
             .should('be.visible')
+            .should('have.text','Você precisa aceitar os termos de uso')
             .and('have.class','text-red-400')
-            .and('have.css','color', 'rgb(248, 113, 113)')
-    
+            .and('have.css','color', 'rgb(248, 113, 113)')  
     })
 
 })
