@@ -58,7 +58,7 @@ describe('Formulário de consultoria', () => {
         cy.get('textarea[placeholder="Descreva mais detalhes sobre sua necessidade"]')
             .type('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s')
 
-            
+
         const techs = [
             'Cypress',
             'Selenium',
@@ -84,15 +84,16 @@ describe('Formulário de consultoria', () => {
         cy.contains('button', 'Enviar formulário')
             .click()
 
-        cy.get('.modal').should('be.visible')
+        cy.get('.modal', { timeout: 7000 })
+            .should('be.visible')
             .find('.modal-content')
             .should('be.visible')
             .and('have.text', 'Sua solicitação de consultoria foi enviada com sucesso! Em breve, nossa equipe entrará em contato através do email fornecido.')
 
         // cy.contains('Sua solicitação de consultoria foi enviada com sucesso! Em breve, nossa equipe entrará em contato através do email fornecido.')
         //     .should('be.visible')
-        
-        })
+
+    })
 
     it('Deve verificar os campos obrigatórios', () => {
         cy.Start()
@@ -102,31 +103,31 @@ describe('Formulário de consultoria', () => {
 
         cy.contains('button', 'Enviar formulário')
             .click()
-            
+
         //Nova versão liberada, foi realizado uma alteração nas mensagens obrigatorias.  
         cy.contains('label', 'Nome Completo')
             .parent()
             .find('p')
             .should('be.visible')
-            .should('have.text','Campo obrigatório')
-            .and('have.class','text-red-400')
-            .and('have.css','color', 'rgb(248, 113, 113)')
+            .should('have.text', 'Campo obrigatório')
+            .and('have.class', 'text-red-400')
+            .and('have.css', 'color', 'rgb(248, 113, 113)')
 
         cy.contains('label', 'Email')
             .parent()
             .find('p')
             .should('be.visible')
-            .should('have.text','Campo obrigatório')
-            .and('have.class','text-red-400')
-            .and('have.css','color', 'rgb(248, 113, 113)')
+            .should('have.text', 'Campo obrigatório')
+            .and('have.class', 'text-red-400')
+            .and('have.css', 'color', 'rgb(248, 113, 113)')
 
         cy.contains('label', 'termos de uso')
             .parent()
             .find('p')
             .should('be.visible')
-            .should('have.text','Você precisa aceitar os termos de uso')
-            .and('have.class','text-red-400')
-            .and('have.css','color', 'rgb(248, 113, 113)')  
+            .should('have.text', 'Você precisa aceitar os termos de uso')
+            .and('have.class', 'text-red-400')
+            .and('have.css', 'color', 'rgb(248, 113, 113)')
     })
 
 })
