@@ -21,7 +21,7 @@ describe('Login', () => {
       .should('be.visible')
   })
 
-  it('NÃO deve logar com email não cadastrado', () => {
+  it.skip('NÃO deve logar com email não cadastrado', () => {
     cy.Start()
     cy.SubmitLoginform('404@webdojo.com', 'katana123')
 

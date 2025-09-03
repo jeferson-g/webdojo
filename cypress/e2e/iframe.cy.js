@@ -16,7 +16,7 @@ describe('Aprendendo a manipular iframe',  ()=> {
             .click()
         
         cy.get('@iFramePlayer')
-            .find('.Play-button')
+            .find('.play-button')
             .click()
         
         cy.get('@iFramePlayer')
