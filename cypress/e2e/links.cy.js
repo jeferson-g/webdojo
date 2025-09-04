@@ -9,8 +9,8 @@ describe('Abertura de nova janela por links', ()=> {
     })
 
     it.only('Acessa o link de termos de uso removendo o tagert blank', ()=> {
-        cy.Start()
-        cy.SubmitLoginform('papito@webdojo.com', 'katana123')
+        cy.start()
+        cy.submitLoginForm('papito@webdojo.com', 'katana123')
 
         cy.contains('Formulários').click()
 
