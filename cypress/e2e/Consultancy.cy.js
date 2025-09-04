@@ -1,10 +1,14 @@
 describe('Formulário de consultoria', () => {
 
-    it.only('Deve solicitar consultoria individual', () => {
+    beforeEach(()=>{
         cy.Start()
         cy.SubmitLoginform('papito@webdojo.com', 'katana123')
 
-        cy.goTo('Formulários', 'Consultoria')
+        cy.goTo('Formulários', 'Consultoria') 
+    })
+
+    it.only('Deve solicitar consultoria individual', () => {
+
         //seguindo a automação sem usar o ID para um melhor aprendizado
         cy.get('input[placeholder="Digite seu nome completo"]').type('Maria Antonieta')
         cy.get('input[placeholder="Digite seu email"]').type('Antonieta@teste.com')
@@ -128,6 +132,14 @@ describe('Formulário de consultoria', () => {
             .should('have.text', 'Você precisa aceitar os termos de uso')
             .and('have.class', 'text-red-400')
             .and('have.css', 'color', 'rgb(248, 113, 113)')
+    })
+
+    afterEach(()=> {
+        cy.log('Teste aftereach, acontece a CADA TESTE')
+    })
+
+    after(() => {
+       cy.log('Teste after, Isso acontece depois de TODOS OS TESTES uma única vez') 
     })
 
 })
