@@ -1,8 +1,7 @@
 describe('Abertura de nova janela por links', ()=> {
 
     it('Validando hyperlink do instagram', ()=> {
-        cy.Start()
-        cy.SubmitLoginform('papito@webdojo.com', 'katana123')
+        cy.login()
 
         cy.get('[data-cy="instagram-link"]')
             .should('have.attr', 'href', 'https://www.instagram.com/qapapito')

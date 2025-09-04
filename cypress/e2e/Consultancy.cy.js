@@ -1,9 +1,7 @@
 describe('Formulário de consultoria', () => {
 
     beforeEach(()=>{
-        cy.Start()
-        cy.SubmitLoginform('papito@webdojo.com', 'katana123')
-
+        cy.login()
         cy.goTo('Formulários', 'Consultoria') 
     })
 

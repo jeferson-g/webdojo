@@ -25,12 +25,12 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-real-events'
 
-Cypress.Commands.add('Start', ()=> {
+Cypress.Commands.add('start', ()=> {
     cy.viewport(1920, 1080)
     cy.visit('http://localhost:3000/')
 })
 
-Cypress.Commands.add('SubmitLoginform', (email, senha)=> {
+Cypress.Commands.add('submitLoginForm', (email, senha)=> {
     cy.get('#email').type(email)
     cy.get('#password').type(senha)
     
@@ -44,4 +44,10 @@ Cypress.Commands.add('goTo', (buttonName, pageTitle) => {
     
     cy.contains('h1', pageTitle)
         .should('be.visible')
+})
+
+//Nooo Helper
+Cypress.Commands.add('login', () => {
+    cy.start()
+    cy.submitLoginForm('papito@webdojo.com', 'katana123')
 })
