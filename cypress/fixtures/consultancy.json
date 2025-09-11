@@ -1,0 +1,48 @@
+{
+  "personal": {
+    "name": "Maria Antonieta",
+    "email": "Antonieta@teste.com",
+    "phone": "(11) 80002-8922",
+    "consultancytype": "Individual",
+    "persontype": "Pessoa Física",
+    "document": "607.809.672-46",
+    "discoveryChannels": [
+      "Instagram",
+      "LinkedIn",
+      "Udemy",
+      "YouTube",
+      "Indicação de Amigo"
+    ],
+    "file": "./cypress/fixtures/testfile.pdf",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "techs": [
+      "Cypress",
+      "Selenium",
+      "Robot Framework"
+    ],
+    "terms": true
+  },
+  "company": {
+    "name": "Maria Antonieta",
+    "email": "Antonieta@teste.com",
+    "phone": "(11) 80002-8922",
+    "consultancytype": "In Company",
+    "persontype": "Pessoa Jurídica",
+    "document": "63.715.220/0001-11",
+    "discoveryChannels": [
+      "Instagram",
+      "LinkedIn",
+      "Udemy",
+      "YouTube",
+      "Indicação de Amigo"
+    ],
+    "file": "./cypress/fixtures/testfile.pdf",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "techs": [
+      "Cypress",
+      "Selenium",
+      "Robot Framework"
+    ],
+    "terms": true
+  }
+}

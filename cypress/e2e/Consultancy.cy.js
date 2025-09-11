@@ -1,35 +1,16 @@
+import consultancyData from '../fixtures/consultancy.json'
+
 describe('Formulário de consultoria', () => {
 
     beforeEach(() => {
         cy.login()
         cy.goTo('Formulários', 'Consultoria')
+
     })
 
-    it.only('Deve solicitar consultoria individual', () => {
+    it('Deve solicitar consultoria individual', () =>  {
 
-        const consultancyform = {
-            name: 'Maria Antonieta',
-            email: 'Antonieta@teste.com',
-            phone: '(11) 80002-8922',
-            consultancytype: 'Individual',
-            persontype: 'Pessoa Física',
-            document: '607.809.672-46',
-            discoveryChannels: [
-                'Instagram',
-                'LinkedIn',
-                'Udemy',
-                'YouTube',
-                'Indicação de Amigo'
-            ],
-            file: './cypress/fixtures/testfile.pdf',
-            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-            techs: [
-                'Cypress',
-                'Selenium',
-                'Robot Framework'
-            ],
-            terms: true
-        }
+        const consultancyform = consultancyData.personal
 
         //seguindo a automação sem usar o ID para um melhor aprendizado
         cy.get('input[placeholder="Digite seu nome completo"]').type(consultancyform.name)
@@ -112,31 +93,9 @@ describe('Formulário de consultoria', () => {
 
     })
 
-    it('Deve solicitar consultoria In Company', () => {
+    it.only('Deve solicitar consultoria In Company', () => {
 
-        const consultancyform = {
-            name: 'Maria Antonieta',
-            email: 'Antonieta@teste.com',
-            phone: '(11) 80002-8922',
-            consultancytype: 'In Company',
-            persontype: 'Pessoa Jurídica',
-            document: '63.715.220/0001-11',
-            discoveryChannels: [
-                'Instagram',
-                'LinkedIn',
-                'Udemy',
-                'YouTube',
-                'Indicação de Amigo'
-            ],
-            file: './cypress/fixtures/testfile.pdf',
-            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-            techs: [
-                'Cypress',
-                'Selenium',
-                'Robot Framework'
-            ],
-            terms: true
-        }
+        const consultancyform = consultancyData.company
 
         //seguindo a automação sem usar o ID para um melhor aprendizado
         cy.get('input[placeholder="Digite seu nome completo"]').type(consultancyform.name)
@@ -216,8 +175,8 @@ describe('Formulário de consultoria', () => {
     })
 
     it('Deve verificar os campos obrigatórios', () => {
-        cy.Start()
-        cy.SubmitLoginform('papito@webdojo.com', 'katana123')
+        cy.start()
+        cy.submitLoginForm('papito@webdojo.com', 'katana123')
 
         cy.goTo('Formulários', 'Consultoria')
 
