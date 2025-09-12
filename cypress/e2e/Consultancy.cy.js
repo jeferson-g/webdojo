@@ -8,7 +8,7 @@ describe('Formulário de consultoria', () => {
 
     })
 
-    it('Deve solicitar consultoria individual', () =>  {
+    it('Deve solicitar consultoria individual', () => {
 
         const consultancyform = consultancyData.personal
 
@@ -93,7 +93,7 @@ describe('Formulário de consultoria', () => {
 
     })
 
-    it.only('Deve solicitar consultoria In Company', () => {
+    it('Deve solicitar consultoria In Company', () => {
 
         const consultancyform = consultancyData.company
 
@@ -174,7 +174,7 @@ describe('Formulário de consultoria', () => {
             .and('have.text', 'Sua solicitação de consultoria foi enviada com sucesso! Em breve, nossa equipe entrará em contato através do email fornecido.')
     })
 
-    it('Deve verificar os campos obrigatórios', () => {
+    it.only('Deve verificar os campos obrigatórios', () => {
         cy.start()
         cy.submitLoginForm('papito@webdojo.com', 'katana123')
 
@@ -183,30 +183,23 @@ describe('Formulário de consultoria', () => {
         cy.contains('button', 'Enviar formulário')
             .click()
 
-        //Nova versão liberada, foi realizado uma alteração nas mensagens obrigatorias.  
-        cy.contains('label', 'Nome Completo')
-            .parent()
-            .find('p')
-            .should('be.visible')
-            .should('have.text', 'Campo obrigatório')
-            .and('have.class', 'text-red-400')
-            .and('have.css', 'color', 'rgb(248, 113, 113)')
+        //Nova versão liberada, foi realizado uma alteração nas mensagens obrigatorias.
+        const requiredFields = [
+            { label: 'Nome Completo', Message: 'Campo obrigatório' },
+            { label: 'Email', Message: 'Campo obrigatório' },
+            { label: 'termos de uso', Message: 'Você precisa aceitar os termos de uso' }
+        ]
 
-        cy.contains('label', 'Email')
-            .parent()
-            .find('p')
-            .should('be.visible')
-            .should('have.text', 'Campo obrigatório')
-            .and('have.class', 'text-red-400')
-            .and('have.css', 'color', 'rgb(248, 113, 113)')
+        requiredFields.forEach(({ label, Message }) => {
+            cy.contains('label', label)
+                .parent()
+                .find('p')
+                .should('be.visible')
+                .should('have.text', Message)
+                .and('have.class', 'text-red-400')
+                .and('have.css', 'color', 'rgb(248, 113, 113)')
+        })
 
-        cy.contains('label', 'termos de uso')
-            .parent()
-            .find('p')
-            .should('be.visible')
-            .should('have.text', 'Você precisa aceitar os termos de uso')
-            .and('have.class', 'text-red-400')
-            .and('have.css', 'color', 'rgb(248, 113, 113)')
     })
 
     afterEach(() => {
