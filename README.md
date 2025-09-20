@@ -1,7 +1,5 @@
 # 🥋 WebDojo
 
-![WebDojo Cover](.github/cover.png)
-
 ## 🚀 Sobre o Projeto
 
 O **WebDojo** é um aplicativo exclusivo para os alunos do **Curso Ninja do Cypress**, ministrado pelo mestre **Fernando Papito**! 🥷💻 Ele foi criado para ser um **campo de treinamento prático**, onde os alunos podem aprimorar suas habilidades em automação de testes com desafios e exercícios focados no **Cypress**.
